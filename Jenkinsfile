@@ -29,6 +29,10 @@ pipeline {
     }
     stage('Cloning and Changing') {
       steps {
+	script {
+	  def tmp = env.myHash
+	  def mytag = tmp.substring(0, 7)
+	}
 	git(
 	  url: "https://github.com/DavoA/TaskDevops.git",
 	  branch: "main",
