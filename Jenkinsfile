@@ -27,7 +27,7 @@ pipeline {
         }
       }
     }
-    stage('Cloning, changing and pushing') {
+    stage('Cloning and Changing') {
       steps {
 	git(
 	  url: "https://github.com/DavoA/TaskDevops.git",
@@ -37,6 +37,15 @@ pipeline {
 	)
 	sh 'bash changing_back.sh'
 	sh 'cat docker-compose.yml'
+      }
+    }
+    stage('Commiting and Pushing') {
+      steps {
+	sh "git add ."
+        sh "git commit -m 'changing 1'"
+	withCredentials([gitUsernamePassword(credentialsId: 'github-pat', rnameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+           sh "git push -u origin main"
+        }
       }
     }  
   }
