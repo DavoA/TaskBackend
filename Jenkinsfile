@@ -35,6 +35,10 @@ pipeline {
 	  changelog: true,
 	  poll: true
 	)
+	script{
+	  def tmp = env.myHash
+	  def mytag = tmp.substring(0, 7)
+	}
 	echo "${mytag}"
 	sh 'bash changing_back.sh ${mytag}'
 	sh 'cat docker-compose.yml'
@@ -42,6 +46,7 @@ pipeline {
     }
     stage('Commiting and Pushing') {
       steps {
+	
 	sh "git add ."
         sh "git commit -m 'changing 1'"
 	withCredentials([gitUsernamePassword(credentialsId: 'github-pat', rnameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
