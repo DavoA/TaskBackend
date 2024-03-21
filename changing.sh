@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_COMPOSE_FILE="TaskDevops/docker-compose.yml"
+DOCKER_COMPOSE_FILE=$(dirname "$0")/docker-compose.yml
 
 current_tag=$(grep 'parandzem/back' $DOCKER_COMPOSE_FILE | awk -F ':' '{print $3}' | tr -d '"')
 
