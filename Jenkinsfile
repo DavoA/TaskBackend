@@ -35,6 +35,7 @@ pipeline {
 	  changelog: true,
 	  poll: true
 	)
+	sh 'cd'
 	sh 'ls'
 	sh 'bash changing.sh'
 	sh 'cat docker-compose.yml'
