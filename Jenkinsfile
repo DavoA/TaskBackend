@@ -41,6 +41,7 @@ pipeline {
     }
     stage('Commiting and Pushing') {
       steps {
+	echo mytag
 	sh "git add ."
         sh "git commit -m 'changing 1'"
 	withCredentials([gitUsernamePassword(credentialsId: 'github-pat', rnameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
