@@ -38,10 +38,10 @@ pipeline {
 	script{
 	  def tmp = env.myHash
 	  def mytag = tmp.substring(0, 7)
+	  bash changing_back.sh mytag
+	  cat docker-compose.yml
 	}
-	echo "${mytag}"
-	sh 'bash changing_back.sh ${mytag}'
-	sh 'cat docker-compose.yml'
+
       }
     }
     stage('Commiting and Pushing') {
