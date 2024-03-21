@@ -27,5 +27,16 @@ pipeline {
         }
       }
     }
+    stage('Cloning, changing and pushing') {
+      steps {
+	git(
+	  url: "https://github.com/DavoA/TaskDevops.git",
+	  branch: "main",
+	  changelog: true,
+	  poll: true
+	)
+	sh 'ls'
+      }
+    }  
   }
 }
