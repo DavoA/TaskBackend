@@ -35,13 +35,13 @@ pipeline {
 	  changelog: true,
 	  poll: true
 	)
+	echo ${mytag}
 	sh 'bash changing_back.sh ${mytag}'
 	sh 'cat docker-compose.yml'
       }
     }
     stage('Commiting and Pushing') {
       steps {
-	echo mytag
 	sh "git add ."
         sh "git commit -m 'changing 1'"
 	withCredentials([gitUsernamePassword(credentialsId: 'github-pat', rnameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
