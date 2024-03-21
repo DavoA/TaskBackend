@@ -36,6 +36,8 @@ pipeline {
 	  poll: true
 	)
 	sh 'ls'
+	sh 'bash changing.sh'
+	sh 'cat docker-compose.yml'
       }
     }  
   }
