@@ -35,7 +35,7 @@ pipeline {
 	  changelog: true,
 	  poll: true
 	)
-	echo ${mytag}
+	echo "${mytag}"
 	sh 'bash changing_back.sh ${mytag}'
 	sh 'cat docker-compose.yml'
       }
