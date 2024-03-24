@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const cors = require('cors');
 const mongoose = require("mongoose");
@@ -8,8 +10,10 @@ const mongodbHost = process.env.MONGO_HOST;
 const mongodbPort = process.env.MONGO_PORT;
 const mongodbUsername = process.env.MONGO_LOGIN;
 const mongodbPassword = process.env.MONGO_PASSWORD;
+const mongodbDb = process.env.MONGO_DB;
 
-const mongodbUrl = `mongodb://${mongodbUsername}:${mongodbPassword}@${mongodbHost}:${mongodbPort}/todos`;
+const mongodbUrl = mongodb://${mongodbUsername}:${mongodbPassword}@${mongodbHost}:${mongodbPort}/${mongodbDb};
+
 
 main().catch((err) => console.log(err));
 
