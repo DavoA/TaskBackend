@@ -13,8 +13,8 @@ const mongodbUrl = `mongodb://${mongodbUsername}:${mongodbPassword}@${mongodbHos
 
 main().catch((err) => console.log(err));
 
-async function main(mongodbUrl) {
-  await mongoose.connect(, {
+async function main() {
+  await mongoose.connect(mongodbUrl, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   });
